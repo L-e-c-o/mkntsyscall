@@ -540,7 +540,6 @@ func writeTempSourceFile(data []byte) (string, error) {
 func main() {
 	flag.Usage = usage
 	flag.Parse()
-	fmt.Println("[DEBUG] flag args = ", flag.Args())
 	if len(flag.Args()) <= 0 {
 		fmt.Fprintf(os.Stderr, "no files to parse provided\n")
 		usage()
@@ -550,8 +549,6 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-
-	fmt.Println("[DEBUG] src = ", src.DLLFuncNames[0].Name)
 
 	var buf bytes.Buffer
 	if err := src.Generate(&buf); err != nil {
