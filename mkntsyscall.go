@@ -10,7 +10,7 @@
 
 // mkntsyscall generates windows indirect system call bodies
 
-package main
+package mkntsyscall
 
 import (
 	"bufio"
