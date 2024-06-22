@@ -610,9 +610,6 @@ func {{.HelperName}}({{.HelperParamList}}) {{template "results" .}}{
 {{define "helpertmpvars"}}{{range .Params}}{{if .TmpVarHelperCode}}	{{.TmpVarHelperCode}}
 {{end}}{{end}}{{end}}
 
-{{define "maybeabsent"}}{{if .MaybeAbsent}}{{.MaybeAbsent}}
-{{end}}{{end}}
-
 {{define "tmpvars"}}{{range .Params}}{{if .TmpVarCode}}	{{.TmpVarCode}}
 {{end}}{{end}}{{end}}
 
