@@ -175,6 +175,17 @@ func (f *Fn) StrconvType() string {
 	return "*byte"
 }
 
+// ErrorVarName returns error variable name for r.
+func (r *Rets) ErrorVarName() string {
+	if r.ReturnsError {
+		return "err"
+	}
+	if r.Type == "error" {
+		return r.Name
+	}
+	return ""
+}
+
 // tmpVar returns temp variable name that will be used to represent p during syscall.
 func (p *Param) tmpVar() string {
 	if p.tmpVarIdx < 0 {
