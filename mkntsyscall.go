@@ -716,6 +716,7 @@ func {{.HelperName}}({{.HelperParamList}}) {{template "results" .}}{
 {{define "results"}}{{if .Rets.List}}{{.Rets.List}} {{end}}{{end}}
 
 {{define "syscall"}}return ntsyscall.Syscalls[{{.DLLFuncNameHash}}].Call({{.SyscallParamList}}){{end}}
+
 {{define "tmpvarsreadback"}}{{range .Params}}{{if .TmpVarReadbackCode}}
 {{.TmpVarReadbackCode}}{{end}}{{end}}{{end}}
 
