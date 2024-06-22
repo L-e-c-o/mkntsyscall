@@ -309,6 +309,14 @@ func (f *Fn) SyscallParamList() string {
 	return strings.Join(a, ", ")
 }
 
+// StrconvFunc returns name of Go string to OS string function for f.
+func (f *Fn) StrconvFunc() string {
+	if f.IsUTF16() {
+		return syscalldot() + "UTF16PtrFromString"
+	}
+	return syscalldot() + "BytePtrFromString"
+}
+
 // ToParams converts r into slice of *Param.
 func (r *Rets) ToParams() []*Param {
 	ps := make([]*Param, 0)
