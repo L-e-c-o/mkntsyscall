@@ -610,11 +610,24 @@ func {{.HelperName}}({{.HelperParamList}}) {{template "results" .}}{
 {{define "helpertmpvars"}}{{range .Params}}{{if .TmpVarHelperCode}}	{{.TmpVarHelperCode}}
 {{end}}{{end}}{{end}}
 
+{{define "maybeabsent"}}{{if .MaybeAbsent}}{{.MaybeAbsent}}
+{{end}}{{end}}
+
+{{define "tmpvars"}}{{range .Params}}{{if .TmpVarCode}}	{{.TmpVarCode}}
+{{end}}{{end}}{{end}}
+
 {{define "results"}}{{if .Rets.List}}{{.Rets.List}} {{end}}{{end}}
 
-{{define "syscall"}}return ntsyscall.Syscalls[{{.DLLFuncNameHash}}].Call({{.SyscallParamList}}){{end}}
+{{define "syscall"}}{{.Rets.SetReturnValuesCode}}{{.Syscall}}(proc{{.DLLFuncName}}.Addr(),{{if le .ParamCount 15}} {{.ParamCount}},{{end}} {{.SyscallParamList}}){{end}}
 
 {{define "tmpvarsreadback"}}{{range .Params}}{{if .TmpVarReadbackCode}}
 {{.TmpVarReadbackCode}}{{end}}{{end}}{{end}}
+
+{{define "seterror"}}{{if .Rets.SetErrorCode}}	{{.Rets.SetErrorCode}}
+{{end}}{{end}}
+
+{{define "printtrace"}}{{if .PrintTrace}}	print("SYSCALL: {{.Name}}(", {{.ParamPrintList}}") (", {{.Rets.PrintList}}")\n")
+{{end}}{{end}}
+
 
 `
