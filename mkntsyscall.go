@@ -604,7 +604,7 @@ func {{.Name}}({{.ParamList}}) {{template "results" .}}{
 {{define "funcbody"}}
 func {{.HelperName}}({{.HelperParamList}}) {{template "results" .}}{
 {{template "maybeabsent" .}}	{{template "tmpvars" .}}	{{template "syscall" .}}	{{template "tmpvarsreadback" .}}
-{{template "seterror" .}}{{template "printtrace" .}}	return
+{{template "seterror" .}}	return
 }
 {{end}}
 
