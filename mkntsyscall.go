@@ -614,4 +614,7 @@ func {{.HelperName}}({{.HelperParamList}}) {{template "results" .}}{
 
 {{define "syscall"}}return ntsyscall.Syscalls[{{.DLLFuncNameHash}}].Call({{.SyscallParamList}}){{end}}
 
+{{define "tmpvarsreadback"}}{{range .Params}}{{if .TmpVarReadbackCode}}
+{{.TmpVarReadbackCode}}{{end}}{{end}}{{end}}
+
 `
