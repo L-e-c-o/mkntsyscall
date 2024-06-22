@@ -703,7 +703,7 @@ func {{.Name}}({{.ParamList}}) {{template "results" .}}{
 
 {{define "funcbody"}}
 func {{.HelperName}}({{.HelperParamList}}) {{template "results" .}}{
-{{template "tmpvars" .}}	{{template "syscall" .}}	return
+{{template "tmpvars" .}}	{{template "syscall" .}}
 }
 {{end}}
 
