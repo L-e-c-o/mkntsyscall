@@ -381,6 +381,9 @@ func extractSection(s string, start, end rune) (prefix, body, suffix string, fou
 
 // DLLFuncNameHash returns DLL function name hash for function f.
 func (f *Fn) DLLFuncNameHash() string {
+	fmt.Println("f.Name = ", f.Name)
+	fmt.Println("f.ddlfuncname = ", f.dllfuncname)
+	
 	if f.dllfuncname == "" {
 		return fmt.Sprintf("%#2x", hash(f.Name))
 	}
